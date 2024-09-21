@@ -257,7 +257,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "rust-mc"
+name = "rust-ping-mc"
 version = "0.1.0"
 dependencies = [
  "anyhow",
