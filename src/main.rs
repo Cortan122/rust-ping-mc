@@ -9,6 +9,7 @@ use std::env;
 
 const TIME_FORMAT: &str = "%b%d %H:%M:%S %Z";
 const SERVER_ADDRESS: &str = "ptyonic.dev";
+const STATUS_PATH: &str = "/var/www/html/status.txt";
 
 #[derive(Serialize, Deserialize, Debug)]
 struct State {
@@ -46,7 +47,7 @@ fn init_libc_time_wrapper() {
 #[tokio::main]
 async fn main() -> Result<()> {
     init_libc_time_wrapper();
-    let mut status_file = File::create("status.txt")?;
+    let mut status_file = File::create(STATUS_PATH)?;
 
     let mut state = load_json();
     let now = SystemTime::now();
