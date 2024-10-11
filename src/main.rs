@@ -85,7 +85,11 @@ async fn main() -> Result<()> {
 
         if num_players > 0 {
             state.players_timestamp = Some(now);
-            write!(status_file, "yay!")?;
+            if num_players == 1 {
+                write!(status_file, "lonely...")?;
+            } else {
+                write!(status_file, "yay!")?;
+            }
         } else if let Some(timestamp) = state.players_timestamp {
             write!(status_file, "Last activity seen on {}", format_std_system_time(&config, timestamp))?;
         }
